@@ -22,12 +22,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> listCarServ(Integer count) {
-        List<Car> cars = new ArrayList<>();
-        int i = 1;
         if (count == null || count >= 5 || count <= 0) {
             return carList;
         }else {
-            return carList.stream().filter(element -> element.getId() <= count).collect(Collectors.toList());
+            return carList.stream().limit(count).collect(Collectors.toList());
         }
     }
 }
